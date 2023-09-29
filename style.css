@@ -30,3 +30,8 @@ body {
     background-color: white;
     border: gray;
 }
+
+.pixel:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
