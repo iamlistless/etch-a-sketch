@@ -1,0 +1,32 @@
+body {
+    background-color: darkslategray;
+}
+
+.topContainer {
+    display: grid;
+    justify-items: center;
+    color: whitesmoke;
+}
+
+.header {
+    margin-bottom: 0;
+}
+
+.subtext {
+    margin-top: 0;
+}
+
+.gridContainer {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(16, 20px);
+    border: gray;
+    gap: 0;
+}
+
+.pixel {
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: gray;
+}
