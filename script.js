@@ -8,6 +8,16 @@ for (i = 0; i < 256; i++) {
     pixel.addEventListener("mousemove", () => {
         pixel.style.backgroundColor = "gray";
         }); 
+        
+    function clearGrid() {
+        pixel.style.backgroundColor = "white";
+    }
+
+    const clearButton = document.querySelector(".clearButton")
+    clearButton.addEventListener("click", () => {
+        clearGrid();
+    })
+
 
     // let isDrawing = false;
 

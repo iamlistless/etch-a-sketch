@@ -16,6 +16,11 @@ body {
     margin-top: 0;
 }
 
+.buttonContainer {
+    display: grid;
+    justify-items: center;
+}
+
 .gridContainer {
     display: grid;
     justify-content: center;
