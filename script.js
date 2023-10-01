@@ -1,42 +1,50 @@
-const grid = document.querySelector('.grid');
-let size = getComputedStyle(grid).getPropertyValue('--size');
+const defaultGridSize = 32; 
 
-for (i = 0; i < size * size; i++) {
-    const pixel = document.createElement("div")
-    pixel.classList.add("pixel")
-    grid.appendChild(pixel)
+let currentGridSize = defaultGridSize;
+
+const grid = document.getElementById('grid');
+
+// let gridStyles = getComputedStyle(grid);
+// let gridSize = gridStyles.getPropertyValue('--size');
+
+function createGrid(gridSize) {
+    grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+
+    for (i = 0; i < gridSize * gridSize; i++) {
+        let pixel = document.createElement('div');
+        pixel.classList.add('pixel');
+        grid.appendChild(pixel); 
+
+        // pixel.addEventListener("mousemove", () => {
+        //     pixel.style.backgroundColor = 'gray';
+        // }); 
+    }
+};
+
+window.onload = () => {
+    createGrid(defaultGridSize)
 }
-    
-pixel.addEventListener("mousemove", () => {
-    pixel.style.backgroundColor = "gray";
-    }); 
-    
-function clearGrid() {
-    pixel.style.backgroundColor = "white";
-}
 
-const clearButton = document.querySelector(".clearButton")
-clearButton.addEventListener("click", () => {
-    clearGrid();
-})
+// function clearGrid() {
+//     const grid = document.querySelector('.grid');
+//     let gridStyles = getComputedStyle(grid);
+//     let gridSize = gridStyles.getPropertyValue('--size');
+//     for (i = 0; i < gridSize * gridSize; i++) {
+//         let pixel = document.querySelector('.pixel');
+//         pixel.remove();
+//     }
+//     let newSize = prompt();
+//     grid.style.setProperty('--size', newSize);
+//     createGrid();
+// }
+// const clearButton = document.querySelector(".clearButton")
+//     clearButton.addEventListener("click", () => {
+//     clearGrid();
+// })
 
-
-    // let isDrawing = false;
-
-    // pixel.addEventListener("mousedown", () => {
-    //     pixel.style.backgroundColor = "gray";
-    //     isDrawing = true;
-    // });
-    
-    // pixel.addEventListener("mousemove", () => {
-    //     if (isDrawing) {
-    //         pixel.style.backgroundColor = "gray";
-    //     } 
-    // });
-
-    // pixel.addEventListener("mouseup", () => {
-    //     if (isDrawing) {
-    //         isDrawing = false;
-    //     }
-    // })
+// function makeGridSize() {
+//     let inputSize = prompt();
+//     return inputSize;
+// }
 

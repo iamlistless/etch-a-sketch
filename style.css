@@ -3,8 +3,7 @@ body {
 }
 
 .topContainer {
-    display: grid;
-    justify-items: center;
+    text-align: center;
     color: whitesmoke;
 }
 
@@ -17,8 +16,7 @@ body {
 }
 
 .buttonContainer {
-    display: grid;
-    justify-items: center;
+    text-align: center;
 }
 
 /* .gridContainer {
@@ -30,21 +28,15 @@ body {
 } */
 
 .gridContainer {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-content: center;
 }
 
 .grid {
-    --size: 4;
-    color: blue;
+    display: grid;
     height: 500px;
     width: 500px;
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    grid-template-columns: repeat(var(--size), 1fr);
-    grid-template-rows: repeat(var(--size), 1fr);
     border: gray;
     gap: 0;
 }
