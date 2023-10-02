@@ -1,8 +1,15 @@
 const defaultGridSize = 32; 
+const defaultPixelColor = 'white';
 
 let currentGridSize = defaultGridSize;
+let currentPixelColor = defaultPixelColor;
 
 const grid = document.getElementById('grid');
+
+
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
 
 // let gridStyles = getComputedStyle(grid);
 // let gridSize = gridStyles.getPropertyValue('--size');
@@ -14,16 +21,37 @@ function createGrid(gridSize) {
     for (i = 0; i < gridSize * gridSize; i++) {
         let pixel = document.createElement('div');
         pixel.classList.add('pixel');
+        pixel.addEventListener('mouseover', changeColor);
+        pixel.addEventListener('mousedown', changeColor);
         grid.appendChild(pixel); 
-
-        // pixel.addEventListener("mousemove", () => {
-        //     pixel.style.backgroundColor = 'gray';
-        // }); 
     }
 };
 
+function changeColor(e) {
+    if ('mouseover' && mouseDown) {
+    e.target.style.backgroundColor = 'gray';
+    } else {
+        return;
+    }
+}
+
+const clearButton = document.querySelector(".clearButton")
+    clearButton.addEventListener("click", () => {
+    clearGrid();
+})
+
+function makeGridSize() {
+    let currentGridSize = prompt();
+    return currentGridSize;
+}
+
+function clearGrid() {
+    grid.textContent = '';
+    createGrid(makeGridSize());
+}
+
 window.onload = () => {
-    createGrid(defaultGridSize)
+    createGrid(currentGridSize)
 }
 
 // function clearGrid() {
@@ -38,13 +66,5 @@ window.onload = () => {
 //     grid.style.setProperty('--size', newSize);
 //     createGrid();
 // }
-// const clearButton = document.querySelector(".clearButton")
-//     clearButton.addEventListener("click", () => {
-//     clearGrid();
-// })
 
-// function makeGridSize() {
-//     let inputSize = prompt();
-//     return inputSize;
-// }
 

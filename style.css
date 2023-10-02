@@ -37,13 +37,13 @@ body {
     display: grid;
     height: 500px;
     width: 500px;
+    background-color: white;
     border: gray;
     gap: 0;
 }
 
 .pixel {
-    background-color: white;
-    border: gray;
+    cursor: crosshair;
 }
 
 /* .pixel:hover {
