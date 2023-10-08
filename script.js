@@ -11,21 +11,19 @@ function setCurrentMode(newMode) {
 }
 
 const grid = document.getElementById('grid');
-const defaultButton = document.querySelector('.defaultButton')
-const rainbowButton = document.querySelector('.rainbowButton')
+const colorButtons = document.querySelectorAll('.colorButton')
+const colorButton = [...colorButtons]
 const clearButton = document.querySelector('.clearButton')
 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
-defaultButton.addEventListener('click', () => {
-    setCurrentMode('colorMode')
-})
-
-rainbowButton.addEventListener('click', () => {
-    setCurrentMode('rainbowMode')
-    console.log(currentMode)
+colorButtons.forEach (colorButton => {
+    colorButton.addEventListener('click', () => {
+    setCurrentMode(colorButton.dataset.colorMode)
+    console.log(colorButton.dataset.colorMode)
+    })
 })
 
 clearButton.addEventListener('click', () => {
@@ -53,7 +51,7 @@ function changeColor(e) {
         return
     }
     else if (currentMode === 'colorMode') {
-        e.target.style.backgroundColor = 'gray';
+        e.target.style.backgroundColor = '#e5e5e5';
     }
     else if (currentMode === 'rainbowMode') {
         const randomR = Math.floor(Math.random() * 256)
@@ -61,7 +59,7 @@ function changeColor(e) {
         const randomB = Math.floor(Math.random() * 256)
         e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
     }
-    console.log(currentMode)
+    // console.log(e.target.style.backgroundColor)
 }
 
 function makeGridSize() {
@@ -84,6 +82,28 @@ window.onload = () => {
     createGrid(defaultGridSize)
     setCurrentMode(defaultMode)
 }
+
+
+// function shadeColor(e) {
+//     let R = parseInt(e.target.style.backgroundColor.substring(4,7));
+//     let G = parseInt(e.target.style.backgroundColor.substring(9,12));
+//     let B = parseInt(e.target.style.backgroundColor.substring(14,17));
+
+//     R = parseInt(R * (100 + -10) / 100);
+//     G = parseInt(G * (100 + -10) / 100);
+//     B = parseInt(B * (100 + -10) / 100);
+
+//     R = (R<255)?R:255;  
+//     G = (G<255)?G:255;
+//     B = (B<255)?B:255;  
+
+//     R = Math.round(R)
+//     G = Math.round(G)
+//     B = Math.round(B)
+
+//     e.target.style.backgroundColor = `rgb(${R}+${G}+${B})`;
+// }
+
 
 // function clearGrid() {
 //     const grid = document.querySelector('.grid');
